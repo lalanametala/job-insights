@@ -6,9 +6,8 @@ def get_unique_job_types(path):
     unique_jobs = set()
 
     for job in all_jobs:
-        for type in job["job_type"].split(','):
-            if type is not None:
-                unique_jobs.add(type)
+        if job["job_type"] is not None:
+            unique_jobs.add(job["job_type"])
     return unique_jobs
 
 
