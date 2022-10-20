@@ -7,12 +7,12 @@ def test_sort_by_criteria():
     path = "src/jobs.csv"
     all_jobs = read(path)
 
-    criteria_keys = {
-        "max_salary": get_max_salary,
-        "min_salary": get_min_salary,
-    }
+    sort_by(all_jobs, "min_salary")
+    expected = get_min_salary(path)
+    result = all_jobs[0]["min_salary"]
+    assert result == str(expected)
 
-    for key in criteria_keys:
-        sort_by(all_jobs, key)
-        expected = criteria_keys[key](path)
-        assert all_jobs[0] == str(expected)
+    sort_by(all_jobs, "max_salary")
+    expected = get_max_salary(path)
+    result = all_jobs[0]["max_salary"]
+    assert result == str(expected)
